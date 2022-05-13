@@ -64,3 +64,18 @@ ERD Entity Relationship Diagram
 n : n 관계 예시) 학생과 과 학생은 여러개의 과를 가질수 있음(복수전공), 과는 여러 학생을 가질 수 있음.
 
 grant all privileges on webdb.* to 'webdb'@'localhost'; //webdb에 있는 모든(*) 권한(privileges) 을 준다.
+flush privileges -> 권한 업데이트.
+MariaDB [(none)]> create user 'webdb'@'%' identified by 'webdb';
+Query OK, 0 rows affected (0.00 sec)
+
+MariaDB [(none)]> grant all privileges on webdb.* to 'webdb'@'%';
+
+char와 varchar의 차이 : char는 고정형이라 메모리 낭비가 생김, varchar는 가변형임.
+
+limit 명령어를 이용해서 게시판 페이지 만듬.
+
+자바에서 DB불러오기
+List<Employee> <= mybatis.selectList("sql", Employee.class);
+
+Employee employee = new Employee();
+employee.setFirstName("..."); //DB안에 있는 컬럼명을 적어줘야함 as로 변경가능.
