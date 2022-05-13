@@ -83,3 +83,21 @@ employee.setFirstName("..."); //DB안에 있는 컬럼명을 적어줘야함 as�
 top-k 검색
 
 for문으로 시간출력할때 sysdate를 쓰면 시간이 다르게 나옴. 함수 실행시간 기준, now는 쿼리문 실행시간 기준이라 항상 같게 나옴.
+
+join
+
+inner join
+	equi join
+	ANSI/ISO SQL1999 JOIN 표준문법
+		natural join (X) -> 조건 필요
+		join ~ using (X) -> 조건 필요
+		join ~ on (O) -> 일반적으로 많이 쓰는것.
+		
+outer join
+	ANSI/ISO SQL1999 JOIN 표준문법
+		join ~ on
+		left join ~ on
+		right join ~ on
+		full join ~ on
+	
+
