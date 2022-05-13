@@ -79,3 +79,7 @@ List<Employee> <= mybatis.selectList("sql", Employee.class);
 
 Employee employee = new Employee();
 employee.setFirstName("..."); //DB안에 있는 컬럼명을 적어줘야함 as로 변경가능.
+
+top-k 검색
+
+for문으로 시간출력할때 sysdate를 쓰면 시간이 다르게 나옴. 함수 실행시간 기준, now는 쿼리문 실행시간 기준이라 항상 같게 나옴.
