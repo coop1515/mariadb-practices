@@ -150,43 +150,6 @@ where a.emp_no = b.emp_no
 order by b.salary;
 
 -- 실습문제 4: 현재 각 부서별로 최고 월급을 받는 직원의 부서이름, 이름과 월급을 출력하세요.
-select first_name, max(salary)
-from employees a, salaries b, departments c, dept_emp d 
-where a.emp_no = b.emp_no
-	and d.emp_no = a.emp_no
-	and c.dept_no = d.dept_no
-	and b.to_date = '9999-01-01'
-    group by dept_name;
-
-select a.dept_name, max(b.salary)
-from departments a, salaries b, dept_emp c
-where a.dept_no = c.dept_no
-	and b.emp_no = c.emp_no
-	and b.to_date = '9999-01-01'
-    and c.to_date = '9999-01-01'
-group by a.dept_name;
-
-select d.first_name, b.salary, a.dept_name
-from departments a, salaries b, dept_emp c, employees d
-where a.dept_no = c.dept_no
-	and b.emp_no = c.emp_no
-	and b.to_date = '9999-01-01'
-    and c.to_date = '9999-01-01'
-    and b.salary = (
-		select max(b.salary)
-		from departments a, salaries b, dept_emp c
-		where a.dept_no = c.dept_no
-		and b.emp_no = c.emp_no
-		and b.to_date = '9999-01-01'
-		and c.to_date = '9999-01-01')
-	and d.first_name = (
-		select first_name
-		from employees a, salaries b, departments c, dept_emp d 
-		where a.emp_no = b.emp_no
-		and d.emp_no = a.emp_no
-		and c.dept_no = d.dept_no
-		and b.to_date = '9999-01-01'
-		group by dept_name);
 -- 
 select a.dept_no, max(b.salary)
 from dept_emp a, salaries b
