@@ -1,11 +1,70 @@
 -- 문제1.
 -- 현재 평균 연봉보다 많은 월급을 받는 직원은 몇 명이나 있습니까?
+select avg(salary)
+from salaries
+where to_date = '9999-01-01';
+
+select *
+from employees a, salaries b
+where a.emp_no = b.emp_no
+	and b.to_date = '9999-01-01'
+	and b.salary > (select avg(salary)
+	from salaries
+    where to_date = '9999-01-01')
+order by salary ;
 
 -- 문제2. 
--- 현재, 각 부서별로 최고의 급여를 받는 사원의 사번, 이름, 부서 연봉을 조회하세요. 단 조회결과는 연봉의 내림차순으로 정렬되어 나타나야 합니다. 
+-- 현재, 각 부서별로 최고의 급여를 받는 사원의 사번, 이름, 부서 연봉을 조회하세요.
+-- 단 조회결과는 연봉의 내림차순으로 정렬되어 나타나야 합니다.
 
+-- 각 부서별 최고연봉 
+select b.dept_name, max(a.salary)
+from salaries a, departments b, dept_emp c
+where a.emp_no = c.emp_no
+	and b.dept_no = c.dept_no
+	and a.to_date = '9999-01-01'
+group by b.dept_name;
+
+select a.emp_no, a.first_name, b.salary
+from employees a, salaries b, dept_emp c, departments d,
+(select c.dept_no, max(a.salary) as max_salary
+from salaries a, departments b, dept_emp c
+where a.emp_no = c.emp_no
+	and b.dept_no = c.dept_no
+	and a.to_date = '9999-01-01'
+group by b.dept_name) e
+
+where  a.emp_no = b.emp_no
+	and a.emp_no = c.emp_no
+    and c.dept_no = d.dept_no
+	and c.dept_no = e.dept_no
+    and b.to_date = '9999-01-01'
+    and c.to_date = '9999-01-01'
+    and b.salary = e.max_salary
+order by b.salary desc;
+    
 -- 문제3.
 -- 현재, 자신의 부서 평균 급여보다 연봉(salary)이 많은 사원의 사번, 이름과 연봉을 조회하세요 
+-- 부서 평균
+select avg(salary)
+from departments a, dept_emp b, salaries c
+where a.dept_no = b.dept_no
+	and b.emp_no = c.emp_no
+    and b.to_date = '9999-01-01'
+    and c.to_date = '9999-01-01'
+group by b.dept_no;
+
+select a.emp_no, a.first_name, b.salary
+from employees a, salaries b
+where a.emp_no = b.emp_no
+	and b.to_date = '9999-01-01'
+    and b.salary > (select avg(salary)
+from departments a, dept_emp b, salaries c
+where a.dept_no = b.dept_no
+	and b.emp_no = c.emp_no
+    and b.to_date = '9999-01-01'
+    and c.to_date = '9999-01-01'
+group by b.dept_no);
 
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
