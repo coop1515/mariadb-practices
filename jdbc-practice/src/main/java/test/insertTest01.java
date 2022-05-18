@@ -19,7 +19,7 @@ public class insertTest01 {
 			// 1. JDBC Driver loading (= JDBC CLASS loading : class loader)
 			Class.forName("org.mariadb.jdbc.Driver");
 			
-			// 2.
+			// 2. connection
 			String url = "jdbc:mysql://192.168.10.45:3306/webdb?charset=utf8";
 			connection = DriverManager.getConnection(url, "webdb","webdb");
 			
@@ -48,6 +48,4 @@ public class insertTest01 {
 		}
 		return result;
 	}
-	
-
 }
