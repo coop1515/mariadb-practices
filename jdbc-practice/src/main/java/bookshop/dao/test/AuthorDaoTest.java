@@ -17,8 +17,6 @@ public class AuthorDaoTest {
 		testInsert(vo);
 		vo.setName("천상병");
 		testInsert(vo);
-		vo.setName("조정래");
-		testInsert(vo);
 		vo.setName("원수연");
 		testInsert(vo);
 	}

@@ -10,52 +10,52 @@ public class BookDaoTest {
 	public static void main(String[] args) {
 		BookVo vo = new BookVo();
 		vo.setTitle("트와일라잇");
-		vo.setAuthorNo(3L);
+		vo.setAuthorNo(1L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("뉴문");
-		vo.setAuthorNo(3L);
+		vo.setAuthorNo(1L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("이클립스");
-		vo.setAuthorNo(3L);
+		vo.setAuthorNo(1L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("브레이킹던");
-		vo.setAuthorNo(3L);
+		vo.setAuthorNo(1L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("아리랑");
-		vo.setAuthorNo(5L);
+		vo.setAuthorNo(2L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("젊은그들");
-		vo.setAuthorNo(6L);
+		vo.setAuthorNo(3L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("아프니깐 청춘이다");
-		vo.setAuthorNo(7L);
+		vo.setAuthorNo(4L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("귀천");
-		vo.setAuthorNo(8L);
+		vo.setAuthorNo(5L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("태백산맥");
-		vo.setAuthorNo(9L);
+		vo.setAuthorNo(2L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
 		vo.setTitle("풀하우스");
-		vo.setAuthorNo(1L);
+		vo.setAuthorNo(6L);
 		vo.setStateCode("재고있음");		
 		testInsert(vo);
 		
