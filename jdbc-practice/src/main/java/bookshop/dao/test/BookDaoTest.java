@@ -2,7 +2,7 @@ package bookshop.dao.test;
 
 import java.util.List;
 
-import bookshop.dao1.BookDao;
+import bookshop.dao.BookDao;
 import bookshop.vo.BookVo;
 
 public class BookDaoTest {

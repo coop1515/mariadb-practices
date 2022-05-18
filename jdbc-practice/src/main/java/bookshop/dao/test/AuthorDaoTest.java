@@ -1,6 +1,6 @@
 package bookshop.dao.test;
 
-import bookshop.dao1.AuthorDao;
+import bookshop.dao.AuthorDao;
 import bookshop.vo.AuthorVo;
 
 public class AuthorDaoTest {
