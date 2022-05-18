@@ -46,33 +46,30 @@ order by b.salary desc;
 -- 문제3.
 -- 현재, 자신의 부서 평균 급여보다 연봉(salary)이 많은 사원의 사번, 이름과 연봉을 조회하세요 
 -- 부서 평균
-select * ,avg(salary)
+select * ,avg(c.salary)
 from departments a, dept_emp b, salaries c
 where a.dept_no = b.dept_no
 	and b.emp_no = c.emp_no
     and b.to_date = '9999-01-01'
     and c.to_date = '9999-01-01'
-group by b.dept_no
-having c.salary > avg(salary);
+group by b.dept_no;
 
 select *
-from employees a, salaries b,  (select avg(salary) as sal
+from employees a, salaries b,  dept_emp c, 
+(select b.dept_no ,avg(salary) as sal
 from departments a, dept_emp b, salaries c
 where a.dept_no = b.dept_no
 	and b.emp_no = c.emp_no
     and b.to_date = '9999-01-01'
     and c.to_date = '9999-01-01'
-group by b.dept_no)
+group by b.dept_no) d
 where a.emp_no = b.emp_no
-	and b.to_date = '9999-01-01'
-    and b.salary > (select avg(salary) as sal
-from departments a, dept_emp b, salaries c
-where a.dept_no = b.dept_no
 	and b.emp_no = c.emp_no
-    and b.to_date = '9999-01-01'
+	and c.dept_no = d.dept_no
+	and b.to_date = '9999-01-01'
     and c.to_date = '9999-01-01'
-group by b.dept_no);
-
+    and b.salary > d.sal;
+        
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
 select a.emp_no, a.first_name, c.dept_name
@@ -140,18 +137,28 @@ limit 0,1;
 -- 현재 매니저들의 연봉
 select *
 from dept_manager a, salaries b
-where a.to_date = '9999-01-01'
-	and b.to_date = '9999-01-01'
-    and a.emp_no = b.emp_no;
+where 
+    a.emp_no = b.emp_no
+    and a.to_date = '9999-01-01'
+	and b.to_date = '9999-01-01';
 
-select a.dept_name, c.first_name, d.salary
-from departments a, dept_manager b, employees c, salaries d
-where a.dept_no = b.dept_no
-	and b.emp_no = c.emp_no
-	and c.emp_no = d.emp_no
+select *
+from employees a, salaries b
+where a.emp_no = b.emp_no
+	and b.to_date = '9999-01-01';
+
+select e.dept_name, a.first_name, b.salary,g.first_name ,c.salary
+from employees a, salaries b, salaries c, dept_manager d, departments e, dept_emp f,
+employees g
+where a.emp_no = b.emp_no
+	and a.emp_no = f.emp_no
+    and f.dept_no = e.dept_no
+    and g.emp_no = c.emp_no
+    and g.emp_no = d.emp_no
+    and d.dept_no = f.dept_no
+    and b.to_date = '9999-01-01'
+    and c.to_date = '9999-01-01'
     and d.to_date = '9999-01-01'
-    and a.dept_no = 'd001'
-    and d.salary > '56654';
-
-
+    and f.to_date = '9999-01-01'
+    and b.salary > c.salary;
 
