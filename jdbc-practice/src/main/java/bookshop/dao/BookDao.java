@@ -17,12 +17,7 @@ public class BookDao {
 			Connection connection = null;
 			PreparedStatement pstmt = null;
 			try {
-				// 1. JDBC Driver loading (= JDBC CLASS loading : class loader)
-				Class.forName("org.mariadb.jdbc.Driver");
-				
-				// 2. connection
-				String url = "jdbc:mysql://192.168.10.45:3306/webdb?charset=utf8";
-				connection = DriverManager.getConnection(url, "webdb","webdb");
+				connection = getConnection();
 				
 				// 3. SQL 준비
 				String sql = "insert into book values (null, ?, ?, ?)";
@@ -36,9 +31,7 @@ public class BookDao {
 				// 4. SQL 실행
 				int count = pstmt.executeUpdate();
 				result = count == 1;
-			} catch (ClassNotFoundException e) {
-					System.out.println("fail Driver loading" + e);
-			} catch (SQLException e) {
+			}catch (SQLException e) {
 				System.out.println("뭐함");
 			} finally {
 				try {
@@ -61,12 +54,7 @@ public class BookDao {
 			PreparedStatement pstmt = null;
 			ResultSet rs = null;
 			try {
-				// 1. JDBC Driver loading (= JDBC CLASS loading : class loader)
-				Class.forName("org.mariadb.jdbc.Driver");
-				
-				// 2. connection
-				String url = "jdbc:mysql://192.168.10.45:3306/webdb?charset=utf8";
-				connection = DriverManager.getConnection(url, "webdb","webdb");
+				connection = getConnection();
 				
 				// 3. SQL 준비
 				String sql = "select a.no, a.title, b.name, a.state_code"
@@ -97,8 +85,6 @@ public class BookDao {
 					
 					result.add(vo);
 				}
-			} catch (ClassNotFoundException e) {
-					System.out.println("fail Driver loading" + e);
 			} catch (SQLException e) {
 				System.out.println("뭐함");
 			} finally {
@@ -117,5 +103,20 @@ public class BookDao {
 				}
 			}
 			return result;	
+		}
+		private Connection getConnection() throws SQLException {
+			Connection connection = null;
+			
+			try {
+				Class.forName("org.mariadb.jdbc.Driver");
+				String url = "jdbc:mysql://192.168.10.45:3306/webdb?charset=utf8";
+				connection = DriverManager.getConnection(url, "webdb", "webdb");
+			
+			} catch (ClassNotFoundException e) {
+				System.out.println("Fail Driver loading");
+			}
+			
+			
+			return connection;
 		}
 }
