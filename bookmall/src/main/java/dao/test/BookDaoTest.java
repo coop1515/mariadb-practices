@@ -3,9 +3,7 @@ package dao.test;
 import java.util.List;
 
 import dao.BookDao;
-import dao.MemberDao;
 import vo.BookVo;
-import vo.MemberVo;
 
 public class BookDaoTest {
 

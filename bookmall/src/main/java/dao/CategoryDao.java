@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vo.CategoryVo;
-import vo.MemberVo;
 
 public class CategoryDao {
 	public boolean insert(CategoryVo vo) {
@@ -55,8 +54,7 @@ public class CategoryDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select *"
-					+ "from category";
+			String sql = "select *" + "from category";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
 			// 4. parameter mapping

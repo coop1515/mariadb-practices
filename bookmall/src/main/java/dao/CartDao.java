@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import vo.BookVo;
 import vo.CartVo;
 
 public class CartDao {
@@ -29,7 +28,6 @@ public class CartDao {
 			pstmt.setLong(3, vo.getAmount());
 			pstmt.setLong(4, vo.getMember_no());
 			pstmt.setLong(5, vo.getBook_no());
-			
 
 			// 4. SQL 실행
 			int count = pstmt.executeUpdate();
@@ -50,7 +48,7 @@ public class CartDao {
 		}
 		return result;
 	}
-	
+
 	public List<CartVo> findSelect() {
 		List<CartVo> result = new ArrayList<>();
 		Connection connection = null;
@@ -60,10 +58,8 @@ public class CartDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select c.name '이름', a.title '책이름', b.amount '수량'"
-					+ " from book a ,cart b, member c"
-					+ " where a.no = b.book_no"
-					+ "	and c.no = b.member_no";
+			String sql = "select c.name '이름', a.title '책이름', b.amount '수량'" + " from book a ,cart b, member c"
+					+ " where a.no = b.book_no" + "	and c.no = b.member_no";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
 			// 4. parameter mapping
@@ -74,7 +70,7 @@ public class CartDao {
 
 			// 6. 결과처리
 			while (rs.next()) {
-				
+
 				String name = rs.getString(1);
 				String title = rs.getString(2);
 				Long amount = rs.getLong(3);
@@ -83,7 +79,7 @@ public class CartDao {
 				vo.setName(name);
 				vo.setTitle(title);
 				vo.setAmount(amount);
-				
+
 				result.add(vo);
 			}
 		} catch (SQLException e) {
@@ -105,7 +101,7 @@ public class CartDao {
 		}
 		return result;
 	}
-	
+
 	public List<CartVo> findSelectAll() {
 		List<CartVo> result = new ArrayList<>();
 		Connection connection = null;
@@ -115,10 +111,8 @@ public class CartDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select a.no, b.title, b.amount, b.price * b.amount"
-					+ " from book a ,cart b, member c"
-					+ " where a.no = b.book_no"
-					+ "	and c.no = b.member_no";
+			String sql = "select a.no, b.title, b.amount, b.price * b.amount" + " from book a ,cart b, member c"
+					+ " where a.no = b.book_no" + "	and c.no = b.member_no";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
 			// 4. parameter mapping
@@ -129,7 +123,7 @@ public class CartDao {
 
 			// 6. 결과처리
 			while (rs.next()) {
-				
+
 				Long no = rs.getLong(1);
 				String title = rs.getString(2);
 				Long amount = rs.getLong(3);
@@ -160,16 +154,7 @@ public class CartDao {
 		}
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	private Connection getConnection() throws SQLException {
 		Connection connection = null;
 

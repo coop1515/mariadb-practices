@@ -12,17 +12,19 @@ public class OrderDaoTest {
 //		testInsert();
 		findSelect();
 	}
+
 	private static void findSelect() {
 		List<OrderVo> list = new OrderDao().findSelect();
-		for(OrderVo vo : list) {
+		for (OrderVo vo : list) {
 			System.out.println(vo);
 		}
-		
+
 	}
+
 	public static void testInsert() {
 		OrderDao dao = new OrderDao();
 		OrderVo vo = new OrderVo();
-	
+
 		vo.setOrder_no(20220519L);
 		vo.setOrderer("둘리(dooly@email.com)");
 		vo.setPayment_price(3000L);
@@ -31,7 +33,7 @@ public class OrderDaoTest {
 		dao.insert(vo);
 
 	}
-	
+
 	public static void testInsertBook() {
 		OrderDao dao = new OrderDao();
 		OrderBookVo vo = new OrderBookVo();

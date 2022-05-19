@@ -2,9 +2,7 @@ package dao.test;
 
 import java.util.List;
 
-import dao.BookDao;
 import dao.CartDao;
-import vo.BookVo;
 import vo.CartVo;
 
 public class CartDaoTest {
@@ -16,12 +14,13 @@ public class CartDaoTest {
 
 	}
 
-	private static void findSelect() {
-		List<CartVo> list = new CartDao().findSelect();
-		for (CartVo vo : list) {
-			System.out.println(vo);
-		}
-	}
+//	private static void findSelect() {
+//		List<CartVo> list = new CartDao().findSelect();
+//		for (CartVo vo : list) {
+//			System.out.println(vo);
+//		}
+//	}
+
 	private static void findSelectAll() {
 		List<CartVo> list = new CartDao().findSelectAll();
 		for (CartVo vo : list) {

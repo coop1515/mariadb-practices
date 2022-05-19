@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vo.BookVo;
-import vo.MemberVo;
 
 public class BookDao {
-	
+
 	public boolean insert(BookVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -48,6 +47,7 @@ public class BookDao {
 		}
 		return result;
 	}
+
 	public List<BookVo> findSelect() {
 		List<BookVo> result = new ArrayList<>();
 		Connection connection = null;
@@ -57,8 +57,7 @@ public class BookDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select a.no, a.title, a.price, b.category_name"
-					+ " from book a, category b"
+			String sql = "select a.no, a.title, a.price, b.category_name" + " from book a, category b"
 					+ " where a.category_no = b.no";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
@@ -70,7 +69,7 @@ public class BookDao {
 
 			// 6. 결과처리
 			while (rs.next()) {
-				
+
 				Long no = rs.getLong(1);
 				String title = rs.getString(2);
 				Long price = rs.getLong(3);
@@ -80,7 +79,7 @@ public class BookDao {
 				vo.setTitle(title);
 				vo.setPrice(price);
 				vo.setCategory_name(cate_name);
-				
+
 				result.add(vo);
 			}
 		} catch (SQLException e) {
@@ -102,20 +101,7 @@ public class BookDao {
 		}
 		return result;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	private Connection getConnection() throws SQLException {
 		Connection connection = null;
 

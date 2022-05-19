@@ -3,9 +3,7 @@ package dao.test;
 import java.util.List;
 
 import dao.CategoryDao;
-import dao.MemberDao;
 import vo.CategoryVo;
-import vo.MemberVo;
 
 public class CategoryDaoTest {
 
@@ -16,10 +14,11 @@ public class CategoryDaoTest {
 
 	private static void findSelect() {
 		List<CategoryVo> list = new CategoryDao().findSelect();
-		for(CategoryVo vo : list) {
+		for (CategoryVo vo : list) {
 			System.out.println(vo);
 		}
 	}
+
 	public static void testInsert() {
 		CategoryDao dao = new CategoryDao();
 		CategoryVo vo = new CategoryVo();

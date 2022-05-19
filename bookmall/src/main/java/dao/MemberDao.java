@@ -47,6 +47,7 @@ public class MemberDao {
 		}
 		return result;
 	}
+
 	public List<MemberVo> findSelect() {
 		List<MemberVo> result = new ArrayList<>();
 		Connection connection = null;
@@ -56,8 +57,7 @@ public class MemberDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select name, email "
-					+ " from member";
+			String sql = "select name, email " + " from member";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
 			// 4. parameter mapping
@@ -68,13 +68,13 @@ public class MemberDao {
 
 			// 6. 결과처리
 			while (rs.next()) {
-				
+
 				String name = rs.getString(1);
 				String email = rs.getString(2);
 				MemberVo vo = new MemberVo();
 				vo.setName(name);
 				vo.setEmail(email);
-				
+
 				result.add(vo);
 			}
 		} catch (SQLException e) {
@@ -96,6 +96,7 @@ public class MemberDao {
 		}
 		return result;
 	}
+
 	private Connection getConnection() throws SQLException {
 		Connection connection = null;
 

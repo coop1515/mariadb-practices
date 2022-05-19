@@ -17,7 +17,7 @@ public class Main {
 		Long no = scanner.nextLong();
 		scanner.close();
 		
-		BookVo vo = new BookVo();
+//		BookVo vo = new BookVo();
 		
 //		new BookDao().update(null);
 		new BookDao().update(no,"대여중");
