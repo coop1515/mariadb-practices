@@ -57,7 +57,7 @@ public class BookDao {
 			connection = getConnection();
 
 			// 3. SQL 준비
-			String sql = "select a.no, a.title, b.name, a.state_code" + " from book a, author b"
+			String sql = "select a.no, a.title, b.name, a.state_code, a.author_no" + " from book a, author b"
 					+ " where a.author_no = b.no" + " order by no";
 			pstmt = connection.prepareStatement(sql); // SQL을 실행할 수 있는 객체
 
@@ -73,13 +73,13 @@ public class BookDao {
 				String title = rs.getString(2);
 				String authorName = rs.getString(3);
 				String stateCode = rs.getString(4);
-
+				Long author = rs.getLong(5);
 				BookVo vo = new BookVo();
 				vo.setNo(no);
 				vo.setTitle(title);
 				vo.setAuthorName(authorName);
 				vo.setStateCode(stateCode);
-
+				vo.setAuthorNo(author);
 				result.add(vo);
 			}
 		} catch (SQLException e) {
@@ -105,7 +105,6 @@ public class BookDao {
 		BookVo vo = new BookVo();
 		vo.setNo(no);
 		vo.setStateCode(statecode);
-		
 		update(vo);
 		
 	}

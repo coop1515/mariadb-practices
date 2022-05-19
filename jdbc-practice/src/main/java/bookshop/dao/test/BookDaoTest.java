@@ -9,8 +9,8 @@ public class BookDaoTest {
 
 	public static void main(String[] args) {
 //		testInsert();
-//		testFindAll();
-		testUPdateStateCode();
+		testFindAll();
+//		testUPdateStateCode();
 	}
 
 	private static void testFindAll() {
