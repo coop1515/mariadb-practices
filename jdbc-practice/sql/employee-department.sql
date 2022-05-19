@@ -10,4 +10,4 @@ select no, name, department_no from employee order by no desc;
 -- employeeDao:delete()
 delete from employee;
 
-
+select *
