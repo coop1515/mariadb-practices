@@ -24,7 +24,6 @@ public class Main {
 		
 		displayBookInfo();
 	}
-
 	private static void displayBookInfo() {
 		List<BookVo> list = new BookDao().findAll();
 		System.out.println("*****도서 정보 출력하기******");
