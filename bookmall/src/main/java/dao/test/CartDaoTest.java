@@ -8,9 +8,9 @@ import vo.CartVo;
 public class CartDaoTest {
 
 	public static void main(String[] args) {
-//		testInsert();
+		testInsert();
 //		findSelect();
-		findSelectAll();
+//		findSelectAll();
 
 	}
 

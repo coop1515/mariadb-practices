@@ -8,8 +8,8 @@ import vo.MemberVo;
 public class MemberDaoTest {
 
 	public static void main(String[] args) {
-//		testInsert();
-		findSelect();
+		testInsert();
+//		findSelect();
 	}
 
 	private static void findSelect() {

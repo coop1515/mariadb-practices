@@ -9,8 +9,8 @@ import vo.OrderVo;
 public class OrderDaoTest {
 
 	public static void main(String[] args) {
-//		testInsert();
-		findSelect();
+		testInsert();
+//		findSelect();
 	}
 
 	private static void findSelect() {
