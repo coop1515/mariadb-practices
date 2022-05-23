@@ -11,7 +11,14 @@ import java.util.List;
 import vo.BookVo;
 
 public class BookDao {
-
+	public void insert(String title, Long price, Long Category_no) {
+		BookVo vo = new BookVo();
+		vo.setTitle(title);
+		vo.setPrice(price);
+		vo.setCategory_no(Category_no);
+		insert(vo);
+		
+	}
 	public boolean insert(BookVo vo) {
 		boolean result = false;
 		Connection connection = null;

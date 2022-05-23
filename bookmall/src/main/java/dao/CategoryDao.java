@@ -11,6 +11,12 @@ import java.util.List;
 import vo.CategoryVo;
 
 public class CategoryDao {
+	public void insert(String categoryName) {
+		CategoryVo vo = new CategoryVo();
+		vo.setCategoryName(categoryName);
+		insert(vo);
+		
+	}
 	public boolean insert(CategoryVo vo) {
 		boolean result = false;
 		Connection connection = null;

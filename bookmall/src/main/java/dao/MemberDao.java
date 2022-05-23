@@ -11,6 +11,15 @@ import java.util.List;
 import vo.MemberVo;
 
 public class MemberDao {
+	public void insert(String name, String phone_Number, String email, String password) {
+		MemberVo vo = new MemberVo();
+		vo.setName(name);
+		vo.setPhone_number(phone_Number);
+		vo.setEmail(email);
+		vo.setPassword(password);
+		insert(vo);
+		
+	}
 	public boolean insert(MemberVo vo) {
 		boolean result = false;
 		Connection connection = null;

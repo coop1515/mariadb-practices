@@ -8,11 +8,22 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import vo.BookVo;
 import vo.OrderBookVo;
 import vo.OrderVo;
 
 public class OrderDao {
 	// orderbook 여기 만들면됨.
+	public void insert(Long order_no, String orderer, Long pay_price, String destination, Long member_no) {
+		OrderVo vo = new OrderVo();
+		vo.setOrder_no(order_no);
+		vo.setOrderer(orderer);
+		vo.setPayment_price(pay_price);
+		vo.setDestination(destination);
+		vo.setMember_no(member_no);
+		insert(vo);
+		
+	}
 	public boolean insert(OrderVo vo) {
 		boolean result = false;
 		Connection connection = null;

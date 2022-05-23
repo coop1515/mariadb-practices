@@ -20,14 +20,14 @@ public class CartDaoTest {
 //			System.out.println(vo);
 //		}
 //	}
-
-	private static void findSelectAll() {
-		List<CartVo> list = new CartDao().findSelectAll();
-		for (CartVo vo : list) {
-			System.out.println(vo);
-		}
-
-	}
+//
+//	private static void findSelectAll() {
+//		List<CartVo> list = new CartDao().findSelectAll();
+//		for (CartVo vo : list) {
+//			System.out.println(vo);
+//		}
+//
+//	}
 
 	public static void testInsert() {
 		CartDao dao = new CartDao();

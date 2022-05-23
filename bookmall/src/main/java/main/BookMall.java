@@ -17,6 +17,12 @@ public class BookMall {
 
 	public static void main(String[] args) {
 		
+		insertCategory();
+		insertMember();
+		insertOrder();
+		insertBook();
+		insertCart();
+		
 		findMember();
 		findCategory();
 		findBook();
@@ -24,7 +30,31 @@ public class BookMall {
 		findOrder();
 		findCart2();
 	}
-
+	private static void insertOrder() {
+		new OrderDao().insert(20220519L, "둘리(dooly@email.com)", 3000L, "우리집", 1L);
+		
+	}
+	private static void insertMember() {
+		new MemberDao().insert("둘리", "010-1111-1111", "dooly@gmail.com", "1234");
+		new MemberDao().insert("마이콜", "010-2222-2222", "michol@gmail.com", "1234");
+		
+	}
+	private static void insertCategory() {
+		new CategoryDao().insert("IT");
+		new CategoryDao().insert("과학");
+		new CategoryDao().insert("문학");
+		
+	}
+	private static void insertBook() {
+		new BookDao().insert("이것이 MariaDB다", 1000L, 1L);
+		new BookDao().insert("러닝 ReactJS", 2000L, 1L);
+		new BookDao().insert("코스모스", 1000L, 2L);
+	}
+	private static void insertCart() {
+		new CartDao().insert("이것이 MariaDB다", 1000L, 2L, 1L, 1L);
+		new CartDao().insert("코스모스", 1000L, 1L, 1L, 3L);
+	}
+	
 	private static void findMember() {
 		List<MemberVo> list = new MemberDao().findSelect();
 		for (MemberVo vo : list) {

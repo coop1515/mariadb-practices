@@ -11,6 +11,17 @@ import java.util.List;
 import vo.CartVo;
 
 public class CartDao {
+	
+	public void insert(String title, Long price, Long amount, Long member_no, Long book_no) {
+		CartVo vo = new CartVo();
+		vo.setTitle(title);
+		vo.setPrice(price);
+		vo.setAmount(amount);
+		vo.setMember_no(member_no);
+		vo.setBook_no(book_no);
+		insert(vo);
+	}
+	
 	public boolean insert(CartVo vo) {
 		boolean result = false;
 		Connection connection = null;
@@ -118,7 +129,6 @@ public class CartDao {
 			// 4. parameter mapping
 
 			// 5. SQL 실행
-
 			rs = pstmt.executeQuery();
 
 			// 6. 결과처리
