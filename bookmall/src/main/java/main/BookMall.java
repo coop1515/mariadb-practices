@@ -17,11 +17,11 @@ public class BookMall {
 
 	public static void main(String[] args) {
 		
-		insertCategory();
-		insertMember();
-		insertOrder();
-		insertBook();
-		insertCart();
+//		insertCategory();
+//		insertMember();
+//		insertOrder();
+//		insertBook();
+//		insertCart();
 		
 		findMember();
 		findCategory();
@@ -91,7 +91,7 @@ public class BookMall {
 	private static void findOrder() {
 		List<OrderVo> list = new OrderDao().findSelect();
 		for (OrderVo vo : list) {
-			System.out.println(vo.getOrder_no() + "-000" + vo.getNo() + "\n" + vo.getOrderer() + ")\n"
+			System.out.println(vo.getOrder_no() + "-000" + vo.getNo() + "\n" + vo.getOrderer() + "\n"
 					+ vo.getPayment_price() + "\n" + vo.getDestination());
 		}
 		System.out.println("=========================");
