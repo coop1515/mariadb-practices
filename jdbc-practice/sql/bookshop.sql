@@ -4,6 +4,8 @@
 desc book;
 desc author;
 
+select * from author;
+select * from book;
 -- AuthorDao:insert
 insert into author values(null, '원수연');
 
